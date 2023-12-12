@@ -24,11 +24,13 @@ $sql="select * from `titanic_dataset`";
 $users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 foreach($users as $user){
+  $bg=($user['Survived']==1)?'lightgreen':'#DDD';
+  $nameBold=($user['Survived']==1)?"font-weight:bolder":"font-weight:300";
 ?>
-<div class="card m-3 " style="width: 18rem;box-shadow:2px 2px 5px #CCC">
+<div class="card m-3 " style="width: 18rem;box-shadow:2px 2px 5px #CCC ;background-color:<?=$bg;?>">
 
-  <div class="card-body">
-    <h5 class="card-title"><?=$user['Name'];?></h5>
+  <div class="card-body position-relative" style="height:240px">
+    <h5 class="card-title" style="<?=$nameBold;?>"><?=$user['Name'];?></h5>
     <p class="card-text">Age:
       <?php
       if($user['Age']>0){
@@ -38,7 +40,9 @@ foreach($users as $user){
       }
       ?>
     </p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="position-absolute" style="bottom:20px; width:100%">
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
   </div>
 </div>
 <?php 
