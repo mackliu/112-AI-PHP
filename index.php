@@ -18,6 +18,12 @@
 </div>
 <!--主內容區-->   
 <main class="container">
+<div class="statistics">
+  <!--統計區-->
+</div>
+<div class="filter">
+  <!--過濾列-->
+</div>
 <div class="row">
 <?php 
 $sql="select * from `titanic`";
@@ -48,11 +54,8 @@ foreach($users as $user){
 <?php 
 }
 ?>
-
 </div>
-
-
-
+<!--分頁-->
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
