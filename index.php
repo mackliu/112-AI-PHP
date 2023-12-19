@@ -20,7 +20,7 @@
 <main class="container">
 <div class="row">
 <?php 
-$sql="select * from `titanic_dataset`";
+$sql="select * from `titanic`";
 $users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 foreach($users as $user){
