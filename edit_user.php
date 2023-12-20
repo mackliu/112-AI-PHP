@@ -5,7 +5,7 @@ $sql="select * from `titanic` where `PassengerId`='{$_GET['id']}'";
 $user=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 //dd($user);
 ?>
-<form action="update_user.php">
+<form action="update_user.php" method="post">
     <div>
         <label for="Survived">Survived</label>
         <input type="text" name="Survived" id="Survived" value="<?=$user['Survived'];?>">
@@ -51,6 +51,7 @@ $user=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
         <input type="text" name="Embarked" id="Embarked" value="<?=$user['Embarked'];?>">
     </div>
     <div>
+        <input type="hidden" name="PassengerId" value="<?=$user['PassengerId'];?>">
         <input type="submit" value="確認編輯">
         <input type="reset" value="重置">
     </div>
