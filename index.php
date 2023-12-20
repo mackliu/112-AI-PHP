@@ -42,7 +42,7 @@
   ?>
   <p>艙等:</p>
   <div>普通:
-    <div class='line d-inline-block bg-info align-middle' style="height:20px;width:<?=280*$class1_rate;?>px"></div>  
+    <div class='line d-inline-block bg-info align-middle' style="height:20px;width:<?=280*$class3_rate;?>px"></div>  
     <?=$class3;?>(<?=round($class3/$row_total,4)*100;?>%)
   </div>
   <div>經濟:
@@ -50,7 +50,7 @@
     <?=$class2;?>(<?=round($class2/$row_total,4)*100;?>%)
   </div>
   <div>特等:
-    <div class='line d-inline-block bg-info align-middle' style="height:20px;width:<?=280*$class3_rate;?>px"></div>  
+    <div class='line d-inline-block bg-info align-middle' style="height:20px;width:<?=280*$class1_rate;?>px"></div>  
     <?=$class1;?>(<?=round($class1/$row_total,4)*100;?>%)
   </div>
 </div>
