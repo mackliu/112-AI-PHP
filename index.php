@@ -19,6 +19,8 @@
 <!--主內容區-->   
 <main class="container">
 <?php
+
+
 $total=$pdo->query("select count(*) from titanic")->fetchColumn();
 $div=50;
 $pages=ceil($total/$div);
@@ -30,15 +32,36 @@ $now=$_GET['p']??1;
   $now=1
 } */
 $start=($now-1)*$div;
-$sql="select * from `titanic` limit $start,$div";
+if(isset($_GET['type'])){
+  $sql="select * from `titanic` where `{$_GET['type']}`='{$_GET['v']}'";
+}else{
+
+  $sql="select * from `titanic` limit $start,$div";
+}
 $users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <div class="statistics">
   <!--統計區-->
 </div>
-<div class="filter">
-  <!--過濾列-->
+<div class="filter d-flex">
+  <div class='btn btn-info mx-1'>性別:</div>
+  <div class='btn btn-primary mx-1'>
+    <a href="?type=Sex&v=male" class='text-white'>男</a>
+  </div>
+  <div class='btn btn-primary mx-1'>
+    <a href="?type=Sex&v=female" class='text-white'>女</a>
+  </div>
+  <div class='btn btn-info ms-3'>艙等:</div>
+  <div class='btn btn-primary mx-1'>
+    <a href='?type=Pclass&v=3' class='text-white'>普通</a>
+  </div>
+  <div class='btn btn-primary mx-1'>
+    <a href='?type=Pclass&v=2' class='text-white'>經濟</a>
+  </div>
+  <div class='btn btn-primary mx-1'>
+    <a href='?type=Pclass&v=1' class='text-white'>特等</a>
+  </div>
 </div>
 <div class='d-flex justify-content-between'>
   <div>
@@ -97,6 +120,8 @@ foreach($users as $user){
       }
       ?>
     </p>
+    <p class='card-text'>Sex:<?=$user['Sex'];?></p>
+    <p class='card-text'>Pclass:<?=$user['Pclass'];?></p>
     <div class="position-absolute" style="bottom:20px; width:100%">
       <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
