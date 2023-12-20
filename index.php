@@ -191,7 +191,7 @@ foreach($users as $user){
     <p class='card-text'>Pclass:<?=$user['Pclass'];?></p>
     <div class="position-absolute text-end pe-3" style="bottom:20px; width:100%">
       <a href="edit_user.php?id=<?=$user['PassengerId'];?>" class="btn btn-primary">編輯</a>
-      <a href="#" class="btn btn-danger">刪除</a>
+      <a  class="btn btn-danger" onclick="del(<?=$user['PassengerId'];?>)">刪除</a>
     </div>
   </div>
 </div>
@@ -240,3 +240,15 @@ foreach($users as $user){
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>
+
+<script>
+function del(id){
+  let con=confirm("你確定要刪除這位乘客嗎?")
+
+  if(con){
+    location.href=`del_user.php?id=${id}`
+  }
+
+}
+
+</script>
