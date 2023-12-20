@@ -189,8 +189,9 @@ foreach($users as $user){
     </p>
     <p class='card-text'>Sex:<?=$user['Sex'];?></p>
     <p class='card-text'>Pclass:<?=$user['Pclass'];?></p>
-    <div class="position-absolute" style="bottom:20px; width:100%">
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="position-absolute text-end pe-3" style="bottom:20px; width:100%">
+      <a href="edit_user.php?id=<?=$user['PassengerId'];?>" class="btn btn-primary">編輯</a>
+      <a href="#" class="btn btn-danger">刪除</a>
     </div>
   </div>
 </div>
