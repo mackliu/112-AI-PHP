@@ -18,6 +18,50 @@
 </div>
 <!--主內容區-->   
 <main class="container">
+<div class='rounded row border my-4 p-4'>
+<div class='col-3'>
+  <?php
+    $males=$pdo->query("SELECT count(*) FROM `titanic` where `Sex`='male';")->fetchColumn();
+    $females=$pdo->query("SELECT count(*) FROM `titanic` where `Sex`='female';")->fetchColumn();
+  ?>
+  <p>性別:</p>
+  <p>男:<?=$males;?></p>
+  <p>女:<?=$females;?></p>
+</div>
+<div  class='col-3'>
+<?php
+    $class1=$pdo->query("SELECT count(*) FROM `titanic` where `Pclass`='1';")->fetchColumn();
+    $class2=$pdo->query("SELECT count(*) FROM `titanic` where `Pclass`='2';")->fetchColumn();
+    $class3=$pdo->query("SELECT count(*) FROM `titanic` where `Pclass`='3';")->fetchColumn();
+  ?>
+  <p>艙等:</p>
+  <p>普通:<?=$class3;?></p>
+  <p>經濟:<?=$class2;?></p>
+  <p>特等:<?=$class1;?></p>
+</div>
+<div  class='col-3'>
+<?php
+    
+    $age1=$pdo->query("SELECT count(*) FROM `titanic` where `Age`>0 && `Age`<16;")->fetchColumn();
+    $age2=$pdo->query("SELECT count(*) FROM `titanic` where `Age`>=16 && `Age`<20;")->fetchColumn();
+    $age3=$pdo->query("SELECT count(*) FROM `titanic` where `Age`>=20 && `Age`<45;")->fetchColumn(); 
+    $age4=$pdo->query("SELECT count(*) FROM `titanic` where `Age`>=45 && `Age`<60;")->fetchColumn(); 
+    $age5=$pdo->query("SELECT count(*) FROM `titanic` where `Age`>=60;")->fetchColumn(); 
+    $age6=$pdo->query("SELECT count(*) FROM `titanic` where `Age`<=0")->fetchColumn();
+  ?>
+  <p>年紀:</p>
+  <p>小孩:<?=$age1;?></p>
+  <p>青少年:<?=$age2;?></p>
+  <p>成人:<?=$age3;?></p>
+  <p>中高齡:<?=$age4;?></p>
+  <p>高齡:<?=$age5;?></p>
+  <p>不詳:<?=$age6;?></p>
+</div>
+
+</div>
+
+
+
 <?php
 if(isset($_GET['type'])){
   $total=$pdo->query("select count(*) from titanic where `{$_GET['type']}`='{$_GET['v']}'")->fetchColumn();
