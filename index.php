@@ -18,16 +18,42 @@
 </div>
 <!--主內容區-->   
 <main class="container">
+<?php
+$total=$pdo->query("select count(*) from titanic")->fetchColumn();
+$div=50;
+$pages=ceil($total/$div);
+$now=$_GET['p']??1;
+/* $now=(isset($_GET['p']))?$_GET['p']:1; */
+/* if(isset($_GET['p'])){
+  $now=$_GET['p'];
+}else{
+  $now=1
+} */
+$start=($now-1)*$div;
+$sql="select * from `titanic` limit $start,$div";
+$users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 <div class="statistics">
   <!--統計區-->
 </div>
 <div class="filter">
   <!--過濾列-->
 </div>
+<div>
+  <?php 
+
+  for($i=1;$i<=$pages;$i++){
+    echo "<a href='?p=$i' class='d-inline-block btn btn-sm btn-primary p-1 m-1'>&nbsp;";
+    echo $i;
+    echo "&nbsp;</a>";
+  }
+
+  ?>
+</div>
 <div class="row">
 <?php 
-$sql="select * from `titanic`";
-$users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+
 
 foreach($users as $user){
   $bg=($user['Survived']==1)?'lightgreen':'#DDD';
@@ -56,6 +82,7 @@ foreach($users as $user){
 ?>
 </div>
 <!--分頁-->
+<div>分頁</div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
