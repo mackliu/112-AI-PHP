@@ -106,7 +106,10 @@ $users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 <div class="statistics">
   <!--統計區-->
 </div>
-<div class="filter d-flex">
+<div >
+  <a href="add_user.php" class="btn btn-warning float-end">新增</a>
+</div>
+<div class="filter d-flex w-100">
   <div class='btn btn-info mx-1'>性別:</div>
   <div class='btn btn-primary mx-1'>
     <a href="?type=Sex&v=male" class='text-white'>男</a>
@@ -124,6 +127,7 @@ $users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
   <div class='btn btn-primary mx-1'>
     <a href='?type=Pclass&v=1' class='text-white'>特等</a>
   </div>
+
 </div>
 <div class='d-flex justify-content-between'>
   <div>
