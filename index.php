@@ -40,16 +40,41 @@ $users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 <div class="filter">
   <!--過濾列-->
 </div>
-<div>
+<div class='d-flex justify-content-between'>
+  <div>
+    <?php
+    if($now-1>0){
+      $prev=$now-1;
+      echo "<a href='?p=$prev' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-left-solid.svg'> </a>";
+    }else{
+      echo "<a href='' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-left-solid.svg'> </a>";
+    }
+    ?>
+    
+
+  </div>
+  <div>
   <?php 
 
   for($i=1;$i<=$pages;$i++){
-    echo "<a href='?p=$i' class='d-inline-block btn btn-sm btn-primary p-1 m-1'>&nbsp;";
+    $select=($i==$now)?"btn-success":"btn-primary";
+    echo "<a href='?p=$i' class='d-inline-block btn btn-sm $select p-1 m-1'>&nbsp;";
     echo $i;
     echo "&nbsp;</a>";
   }
 
   ?>
+  </div>
+  <div>
+  <?php
+    if($now+1<=$pages){
+      $next=$now+1;
+      echo "<a href='?p=$next' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-right-solid.svg'> </a>";
+    }else{
+      echo "<a href='' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img  src='./img/arrow-right-solid.svg'> </a>";
+    }
+    ?>
+  </div>
 </div>
 <div class="row">
 <?php 
@@ -82,7 +107,42 @@ foreach($users as $user){
 ?>
 </div>
 <!--分頁-->
-<div>分頁</div>
+<div class='d-flex justify-content-between'>
+  <div>
+    <?php
+    if($now-1>0){
+      $prev=$now-1;
+      echo "<a href='?p=$prev' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-left-solid.svg'> </a>";
+    }else{
+      echo "<a href='' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-left-solid.svg'> </a>";
+    }
+    ?>
+    
+
+  </div>
+  <div>
+  <?php 
+
+  for($i=1;$i<=$pages;$i++){
+    $select=($i==$now)?"btn-success":"btn-primary";
+    echo "<a href='?p=$i' class='d-inline-block btn btn-sm $select p-1 m-1'>&nbsp;";
+    echo $i;
+    echo "&nbsp;</a>";
+  }
+
+  ?>
+  </div>
+  <div>
+  <?php
+    if($now+1<=$pages){
+      $next=$now+1;
+      echo "<a href='?p=$next' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-right-solid.svg'> </a>";
+    }else{
+      echo "<a href='' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img  src='./img/arrow-right-solid.svg'> </a>";
+    }
+    ?>
+  </div>
+</div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
