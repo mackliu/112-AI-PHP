@@ -19,27 +19,42 @@
 <!--主內容區-->   
 <main class="container">
 <div class='rounded row border my-4 p-4'>
-<div class='col-3'>
+<div class='col-4'>
   <?php
+    $row_total=$pdo->query("select count(*) from `titanic`")->fetchColumn();
     $males=$pdo->query("SELECT count(*) FROM `titanic` where `Sex`='male';")->fetchColumn();
+    $males_rate=round($males/$row_total,4);
     $females=$pdo->query("SELECT count(*) FROM `titanic` where `Sex`='female';")->fetchColumn();
+    $females_rate=round($females/$row_total,4)
   ?>
   <p>性別:</p>
-  <p>男:<?=$males;?></p>
-  <p>女:<?=$females;?></p>
+  <div>男:<div class='line d-inline-block bg-info align-middle' style="height:20px;width:<?=280*$males_rate;?>px"></div><?=$males;?>(<?=$males_rate*100;?>%)</div>
+  <div>女:<div class='line d-inline-block bg-danger align-middle' style="height:20px;width:<?=280*$females_rate;?>px"></div><?=$females;?>(<?=$females_rate*100;?>%)</div>
 </div>
-<div  class='col-3'>
+<div  class='col-4'>
 <?php
     $class1=$pdo->query("SELECT count(*) FROM `titanic` where `Pclass`='1';")->fetchColumn();
+    $class1_rate=round($class1/$row_total,4);
     $class2=$pdo->query("SELECT count(*) FROM `titanic` where `Pclass`='2';")->fetchColumn();
+    $class2_rate=round($class2/$row_total,4);
     $class3=$pdo->query("SELECT count(*) FROM `titanic` where `Pclass`='3';")->fetchColumn();
+    $class3_rate=round($class3/$row_total,4);
   ?>
   <p>艙等:</p>
-  <p>普通:<?=$class3;?></p>
-  <p>經濟:<?=$class2;?></p>
-  <p>特等:<?=$class1;?></p>
+  <div>普通:
+    <div class='line d-inline-block bg-info align-middle' style="height:20px;width:<?=280*$class1_rate;?>px"></div>  
+    <?=$class3;?>(<?=round($class3/$row_total,4)*100;?>%)
+  </div>
+  <div>經濟:
+    <div class='line d-inline-block bg-info align-middle' style="height:20px;width:<?=280*$class2_rate;?>px"></div>  
+    <?=$class2;?>(<?=round($class2/$row_total,4)*100;?>%)
+  </div>
+  <div>特等:
+    <div class='line d-inline-block bg-info align-middle' style="height:20px;width:<?=280*$class3_rate;?>px"></div>  
+    <?=$class1;?>(<?=round($class1/$row_total,4)*100;?>%)
+  </div>
 </div>
-<div  class='col-3'>
+<div  class='col-4'>
 <?php
     
     $age1=$pdo->query("SELECT count(*) FROM `titanic` where `Age`>0 && `Age`<16;")->fetchColumn();
@@ -50,12 +65,12 @@
     $age6=$pdo->query("SELECT count(*) FROM `titanic` where `Age`<=0")->fetchColumn();
   ?>
   <p>年紀:</p>
-  <p>小孩:<?=$age1;?></p>
-  <p>青少年:<?=$age2;?></p>
-  <p>成人:<?=$age3;?></p>
-  <p>中高齡:<?=$age4;?></p>
-  <p>高齡:<?=$age5;?></p>
-  <p>不詳:<?=$age6;?></p>
+  <p>小孩:<?=$age1;?>(<?=round($age1/$row_total,4)*100;?>%)</p>
+  <p>青少年:<?=$age2;?>(<?=round($age2/$row_total,4)*100;?>%)</p>
+  <p>成人:<?=$age3;?>(<?=round($age3/$row_total,4)*100;?>%)</p>
+  <p>中高齡:<?=$age4;?>(<?=round($age4/$row_total,4)*100;?>%)</p>
+  <p>高齡:<?=$age5;?>(<?=round($age5/$row_total,4)*100;?>%)</p>
+  <p>不詳:<?=$age6;?>(<?=round($age6/$row_total,4)*100;?>%)</p>
 </div>
 
 </div>
