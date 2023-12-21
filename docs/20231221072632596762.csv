@@ -1,0 +1,51 @@
+﻿"PassengerId","Survived","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"
+1164,1,1,"Clark, Mrs. Walter Miller (Virginia McDowell)",female,26,1,0,13508,136.779,C89,C
+1165,1,3,"Lennon, Miss. Mary",female,,1,0,370371,15.5,,Q
+1166,0,3,"Saade, Mr. Jean Nassr",male,,0,0,2676,7.225,,C
+1167,1,2,"Bryhl, Miss. Dagmar Jenny Ingeborg ",female,20,1,0,236853,26,,S
+1168,0,2,"Parker, Mr. Clifford Richard",male,28,0,0,"SC 14888",10.5,,S
+1169,0,2,"Faunthorpe, Mr. Harry",male,40,1,0,2926,26,,S
+1170,0,2,"Ware, Mr. John James",male,30,1,0,"CA 31352",21,,S
+1171,0,2,"Oxenham, Mr. Percy Thomas",male,22,0,0,"W./C. 14260",10.5,,S
+1172,1,3,"Oreskovic, Miss. Jelka",female,23,0,0,315085,8.6625,,S
+1173,0,3,"Peacock, Master. Alfred Edward",male,0.7,1,1,"SOTON/O.Q. 3101315",13.775,,S
+1174,1,3,"Fleming, Miss. Honora",female,,0,0,364859,7.75,,Q
+1175,1,3,"Touma, Miss. Maria Youssef",female,9,1,1,2650,15.2458,,C
+1176,1,3,"Rosblom, Miss. Salli Helena",female,2,1,1,370129,20.2125,,S
+1177,0,3,"Dennis, Mr. William",male,36,0,0,"A/5 21175",7.25,,S
+1178,0,3,"Franklin, Mr. Charles (Charles Fardon)",male,,0,0,"SOTON/O.Q. 3101314",7.25,,S
+1179,0,1,"Snyder, Mr. John Pillsbury",male,24,1,0,21228,82.2667,B45,S
+1180,0,3,"Mardirosian, Mr. Sarkis",male,,0,0,2655,7.2292,"F E46",C
+1181,0,3,"Ford, Mr. Arthur",male,,0,0,"A/5 1478",8.05,,S
+1182,0,1,"Rheims, Mr. George Alexander Lucien",male,,0,0,"PC 17607",39.6,,S
+1183,1,3,"Daly, Miss. Margaret Marcella Maggie""""",female,30,0,0,382650,6.95,,Q
+1184,0,3,"Nasr, Mr. Mustafa",male,,0,0,2652,7.2292,,C
+1185,0,1,"Dodge, Dr. Washington",male,53,1,1,33638,81.8583,A34,S
+1186,0,3,"Wittevrongel, Mr. Camille",male,36,0,0,345771,9.5,,S
+1187,0,3,"Angheloff, Mr. Minko",male,26,0,0,349202,7.8958,,S
+1188,1,2,"Laroche, Miss. Louise",female,1,1,2,"SC/Paris 2123",41.5792,,C
+1189,0,3,"Samaan, Mr. Hanna",male,,2,0,2662,21.6792,,C
+1190,0,1,"Loring, Mr. Joseph Holland",male,30,0,0,113801,45.5,,S
+1191,0,3,"Johansson, Mr. Nils",male,29,0,0,347467,7.8542,,S
+1192,0,3,"Olsson, Mr. Oscar Wilhelm",male,32,0,0,347079,7.775,,S
+1193,0,2,"Malachard, Mr. Noel",male,,0,0,237735,15.0458,D,C
+1194,0,2,"Phillips, Mr. Escott Robert",male,43,0,1,"S.O./P.P. 2",21,,S
+1195,0,3,"Pokrnic, Mr. Tome",male,24,0,0,315092,8.6625,,S
+1196,1,3,"McCarthy, Miss. Catherine Katie""""",female,,0,0,383123,7.75,,Q
+1197,1,1,"Crosby, Mrs. Edward Gifford (Catherine Elizabeth Halstead)",female,64,1,1,112901,26.55,B26,S
+1198,0,1,"Allison, Mr. Hudson Joshua Creighton",male,30,1,2,113781,151.55,"C22 C26",S
+1199,0,3,"Aks, Master. Philip Frank",male,0.8,0,1,392091,9.35,,S
+1200,0,1,"Hays, Mr. Charles Melville",male,55,1,1,12749,93.5,B69,S
+1201,1,3,"Hansen, Mrs. Claus Peter (Jennie L Howard)",female,45,1,0,350026,14.1083,,S
+1202,0,3,"Cacic, Mr. Jego Grga",male,18,0,0,315091,8.6625,,S
+1203,0,3,"Vartanian, Mr. David",male,22,0,0,2658,7.225,,C
+1204,0,3,"Sadowitz, Mr. Harry",male,,0,0,"LP 1588",7.575,,S
+1205,1,3,"Carr, Miss. Jeannie",female,37,0,0,368364,7.75,,Q
+1206,1,1,"White, Mrs. John Stuart (Ella Holmes)",female,55,0,0,"PC 17760",135.633,C32,C
+1207,1,3,"Hagardon, Miss. Kate",female,17,0,0,"AQ/3. 30631",7.7333,,Q
+1208,0,1,"Spencer, Mr. William Augustus",male,57,1,0,"PC 17569",146.520,B78,C
+1209,0,2,"Rogers, Mr. Reginald Harry",male,19,0,0,28004,10.5,,S
+1210,0,3,"Jonsson, Mr. Nils Hilding",male,27,0,0,350408,7.8542,,S
+1211,0,2,"Jefferys, Mr. Ernest Wilfred",male,22,2,0,"C.A. 31029",31.5,,S
+1212,0,3,"Andersson, Mr. Johan Samuel",male,26,0,0,347075,7.775,,S
+1213,0,3,"Krekorian, Mr. Neshan",male,25,0,0,2654,7.2292,"F E57",C

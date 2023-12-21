@@ -151,7 +151,13 @@ $users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 ?>
 <div >
-  <a href="add_user.php" class="btn btn-warning float-end">新增</a>
+  <?php
+  if(isset($_GET['file'])){
+    echo "<a href='./docs/{$_GET['file']}' class='btn btn-success float-end mx-2' download>下載</a>";
+  }
+  ?>
+  <a href="add_user.php" class="btn btn-warning float-end mx-2">新增</a>
+  <a href="Javascript:exp()" class="btn btn-info float-end mx-2">匯出</a>
 </div>
 <!--篩選區-->
 <div class="filter d-flex w-100 my-3 border-bottom pb-2">
@@ -288,6 +294,10 @@ function del(id){
 
 }
 
-
+function exp(){
+  let query_str=document.location.href
+  console.log(query_str)
+  location.href='export.php?'+query_str.split("?")[1]
+}
 
 </script>
