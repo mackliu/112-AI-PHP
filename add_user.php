@@ -6,7 +6,9 @@
     <title>新增使用者</title>
     <!-- 引入 Bootstrap 5.0 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <script src="jquery.js"></script>
 </head>
+
 <body>
 <main class="container">
 
@@ -31,6 +33,7 @@
         <div class="form-group">
             <label for="Name">Name</label>
             <input type="text" class="form-control" name="Name" id="Name" >
+            <div id='NameWarning'></div>
         </div>
         <div class="form-group">
             <label for="Sex">Sex</label>
@@ -91,3 +94,20 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </body>
 </html>
+<script>
+$("#Name").on("input",()=>{
+    if($("#Name").val().length>10){
+        $("#NameWarning").text("名稱欄位不能超過10個字")
+        $("#NameWarning").removeClass("text-success");
+        $("#NameWarning").addClass("text-danger");
+        $("#Name").val($("#Name").val().substr(0,10))
+    }else{
+        $("#NameWarning").text("名稱可用")
+        $("#NameWarning").removeClass("text-danger");
+        $("#NameWarning").addClass("text-success");
+    }
+})
+
+
+
+</script>

@@ -1,6 +1,5 @@
 <?php include_once "db.php";
 
-
 $sql="insert into `titanic` (`Survived`, 
                              `Pclass`, 
                              `Name`, 
