@@ -49,5 +49,41 @@ foreach($balls as $ball){
 }
 echo "<div class='spe'>$second</div>";
 ?>
+
+<?php
+$oil=file_get_contents("https://www.cpc.com.tw/GetOilPriceJson.aspx?type=TodayOilPriceString");
+$oil=json_decode($oil);
+/* echo "<pre>";
+print_r($oil);
+echo "</pre>" */
+
+?>
+<table>
+    <tr>
+        <td>92無鉛</td>
+        <td><?=$oil->sPrice1;?></td>
+    </tr>
+    <tr>
+        <td>95無鉛</td>
+        <td><?=$oil->sPrice2;?></td>
+    </tr>
+    <tr>
+        <td>98無鉛</td>
+        <td><?=$oil->sPrice3;?></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
 </body>
 </html>
+
