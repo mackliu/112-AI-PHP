@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>鐵達尼專案</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-</head>
+    <script src="jquery.js"></script>
+  </head>
 <body>
 <!--標頭區-->   
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
@@ -165,113 +166,14 @@ $users=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     <a href='?type=Pclass&v=1' class='btn btn-primary mx-1'>特等</a>
 </div>
 <div class='d-flex justify-content-between'>
-  <div>
-    <?php
-    if(isset($_GET['type'])){
-      $type="&type={$_GET['type']}&v={$_GET['v']}";
-    }else{
-      $type='';
-    }
-    if($now-1>0){
-      $prev=$now-1;
-      echo "<a href='?p={$prev}{$type}' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-left-solid.svg'> </a>";
-    }else{
-      echo "<a href='' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-left-solid.svg'> </a>";
-    }
-    ?>
-  </div>
-  <div>
-  <?php 
-
-  for($i=1;$i<=$pages;$i++){
-    $select=($i==$now)?"btn-success":"btn-primary";
-    echo "<a href='?p={$i}{$type}' class='d-inline-block btn btn-sm $select p-1 m-1'>&nbsp;";
-    echo $i;
-    echo "&nbsp;</a>";
-  }
-
-  ?>
-  </div>
-  <div>
-  <?php
-    if($now+1<=$pages){
-      $next=$now+1;
-      echo "<a href='?p={$next}{$type}' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-right-solid.svg'> </a>";
-    }else{
-      echo "<a href='' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img  src='./img/arrow-right-solid.svg'> </a>";
-    }
-    ?>
-  </div>
+<!--分頁-->
 </div>
-<div class="row">
-<?php 
-foreach($users as $user){
-  $bg=($user['Survived']==1)?'lightgreen':'#DDD';
-  $nameBold=($user['Survived']==1)?"font-weight:bolder":"font-weight:300";
-?>
-<div class="col-3 my-3 d-flex justify-content-center items-center">
-<div class="card" style="width: 18rem;box-shadow:2px 2px 5px #CCC ;background-color:<?=$bg;?>">
+<div class="row" id="Users">
 
-  <div class="card-body position-relative" style="height:240px">
-    <h5 class="card-title" style="<?=$nameBold;?>"><?=$user['Name'];?></h5>
-    <p class="card-text">Age:
-      <?php
-      if($user['Age']>0){
-        echo $user['Age'];
-      }else{
-        echo "不詳";
-      }
-      ?>
-    </p>
-    <p class='card-text'>Sex:<?=$user['Sex'];?></p>
-    <p class='card-text'>Pclass:<?=$user['Pclass'];?></p>
-    <div class="position-absolute text-end pe-3" style="bottom:20px; right:10px">
-      <a href="edit_user.php?id=<?=$user['PassengerId'];?>" class="btn btn-primary">編輯</a>
-      <a  class="btn btn-danger" onclick="del(<?=$user['PassengerId'];?>)">刪除</a>
-    </div>
-  </div>
-</div>
-</div>
-<?php 
-}
-?>
 </div>
 <!--分頁-->
 <div class='d-flex justify-content-between'>
-  <div>
-    <?php
-    if($now-1>0){
-      $prev=$now-1;
-      echo "<a href='?p=$prev' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-left-solid.svg'> </a>";
-    }else{
-      echo "<a href='' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-left-solid.svg'> </a>";
-    }
-    ?>
-    
 
-  </div>
-  <div>
-  <?php 
-
-  for($i=1;$i<=$pages;$i++){
-    $select=($i==$now)?"btn-success":"btn-primary";
-    echo "<a href='?p=$i' class='d-inline-block btn btn-sm $select p-1 m-1'>&nbsp;";
-    echo $i;
-    echo "&nbsp;</a>";
-  }
-
-  ?>
-  </div>
-  <div>
-  <?php
-    if($now+1<=$pages){
-      $next=$now+1;
-      echo "<a href='?p=$next' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img src='./img/arrow-right-solid.svg'> </a>";
-    }else{
-      echo "<a href='' class='d-inline-block btn btn-sm btn-primary px-2 py-1 m-1'> <img  src='./img/arrow-right-solid.svg'> </a>";
-    }
-    ?>
-  </div>
 </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
@@ -288,6 +190,30 @@ function del(id){
 
 }
 
+$.get("users_api.php",(users)=>{
+  console.log(users)
+  let card='';
+  let is_survived=1;
+users.forEach((user,idx)=>{
+  is_survived=(user.Survived=='1')?'bg-success':'bg-light';
+  card=`<div class="col-3 my-3 d-flex justify-content-center items-center">
+            <div class="card ${is_survived}" style="width: 18rem;box-shadow:2px 2px 5px #CCC ;">
 
+              <div class="card-body position-relative" style="height:240px">
+                <h5 class="card-title" >${user.Name}</h5>
+                <p class="card-text">Age:${user.Age}
+                </p>
+                <p class='card-text'>Sex:${user.Sex}</p>
+                <p class='card-text'>Pclass:${user.Pclass}</p>
+                <div class="position-absolute text-end pe-3" style="bottom:20px; right:10px">
+                  <a href="edit_user.php?id=${user.PassengerId}" class="btn btn-primary">編輯</a>
+                  <a  class="btn btn-danger" onclick="del(${user.PassengerId})">刪除</a>
+                </div>
+              </div>
+            </div>
+            </div>`;
+  $("#Users").append(card)  
+})
+})
 
 </script>
