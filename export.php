@@ -8,11 +8,16 @@ if(isset($_GET['type'])){
     $v=$_GET['v'];
 }
 
+// 檢查是否有指定 type 參數
 if(isset($_GET['type'])){
+    // 根據指定的 type 和 v 參數查詢符合條件的資料筆數
     $total=$pdo->query("select count(*) from titanic where `{$_GET['type']}`='{$_GET['v']}'")->fetchColumn();
-  }else{
+}else{
+    // 查詢 titanic 資料表中的總資料筆數
     $total=$pdo->query("select count(*) from titanic")->fetchColumn();
-  }
+}
+
+
 $div=50;
 $pages=ceil($total/$div);
 $now=$_GET['p']??1;
